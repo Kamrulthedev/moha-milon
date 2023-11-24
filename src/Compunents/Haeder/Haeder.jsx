@@ -1,12 +1,23 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Haeder = () => {
+
+  const { user, logOut } = useContext(AuthContext) 
+
+  const handlerLogOut = ()=>{
+    logOut()
+    .then(()=>{console.log('user logged out succesful')} )
+    .catch(error => console.error(error))
+  }
 
 
     const Links = <>
     <li><NavLink to={'/'}>Home</NavLink> </li>
     <li><NavLink to={'/Login'}>Login</NavLink> </li>
     <li><NavLink to={'/Register'}>Register</NavLink> </li>
+    <li><NavLink to={'/Orders'}>Orders</NavLink> </li>
  
     </>
     return (
@@ -29,7 +40,18 @@ const Haeder = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+    {
+      user ? <>
+       <span>{user.email}</span>
+       <a onClick={handlerLogOut} className="btn btn-sm">Sing out</a>
+      </>:
+        <Link to={'/Login'}>
+           <button  className="btn btn-sm">Login</button>
+        </Link>
+      
+      }
+    
+   
   </div>
 </div>
         </div>
