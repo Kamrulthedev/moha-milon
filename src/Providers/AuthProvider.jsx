@@ -1,7 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import auth from "../firebesea/firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword  } from "firebase/auth";
 
 export const AuthContext = createContext (null)
 
@@ -18,6 +18,12 @@ const AuthProvider = ({children}) => {
 
 
     }
+    useEffect(()=>{
+        onAuthStateChanged(auth, currentUser =>{
+            setUser(currentUser);
+            console.log('observing current user', currentUser)
+        })
+    },[])
 
     const authInfo = {user, createUser, signInUser}
 
