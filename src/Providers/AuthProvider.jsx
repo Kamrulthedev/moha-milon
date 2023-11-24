@@ -20,8 +20,8 @@ const AuthProvider = ({children}) => {
     }
     useEffect(()=>{
         onAuthStateChanged(auth, currentUser =>{
-            setUser(currentUser);
             console.log('observing current user', currentUser)
+            setUser(currentUser);
         })
     },[])
 
