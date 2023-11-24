@@ -9,6 +9,7 @@ import Register from './Compunents/Register/Register'
 import AuthProvider from './Providers/AuthProvider'
 import Orders from './Compunents/Orders/Orders'
 import Pribate from './Routs/Pribate'
+import Profile from './Compunents/Profile/Profile'
 
 
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
         {
           path:'/Orders',
           element:<Pribate><Orders></Orders></Pribate>
+        },
+        {
+          path:'/Profile',
+          element:<Pribate><Profile></Profile></Pribate>
         }
        ]
 

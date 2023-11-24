@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
 
 
-    const { signInUser } = useContext(AuthContext);
+    const { signInUser, signInWithGoogle } = useContext(AuthContext);
+    const navigate = useNavigate()
 
 
 
@@ -15,20 +16,26 @@ const Login = () => {
         const password = e.target.password.value;
         console.log(email, password);
 
-
-
-
-
-
-        // create User in firebase
+       // create User in firebase
         signInUser(email, password)
         .then(result =>{
             console.log(result.user)
             e.target.reset();
+           navigate('/')
           })
           .catch(error =>{
             console.error('Error signing in:', error.code, error.message);
           })
+    }
+
+    const handlerGoogleSingIn = () =>{
+        signInWithGoogle()
+        .then(result=>{
+            console.log(result.user)
+        })
+        .catch(error =>{
+            console.log(error)
+        })
     }
 
     return (
@@ -61,7 +68,9 @@ const Login = () => {
                             <p>New Here? Please <Link to={'/Register'}>
                             <button className="btn btn-link">Register</button>
                         </Link></p>
+                        <p><button onClick={handlerGoogleSingIn} className="btn btn-ghost">Google</button></p>
                         </form>
+
                        
                     </div>
                 </div>
