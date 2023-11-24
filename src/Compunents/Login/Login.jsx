@@ -19,10 +19,12 @@ const Login = () => {
 
 
 
+
         // create User in firebase
         signInUser(email, password)
         .then(result =>{
             console.log(result.user)
+            e.target.reset();
           })
           .catch(error =>{
             console.error('Error signing in:', error.code, error.message);

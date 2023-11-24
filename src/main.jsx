@@ -8,6 +8,7 @@ import Login from './Compunents/Login/Login'
 import Register from './Compunents/Register/Register'
 import AuthProvider from './Providers/AuthProvider'
 import Orders from './Compunents/Orders/Orders'
+import Pribate from './Routs/Pribate'
 
 
 
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
         },
         {
           path:'/Orders',
-          element:<Orders></Orders>
+          element:<Pribate><Orders></Orders></Pribate>
         }
        ]
 
