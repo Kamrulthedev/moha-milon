@@ -21,8 +21,8 @@ const Register = () => {
      
     </div>
     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <form className="card-body w-96">
-      <form onSubmit={handlerRegister}>
+      <form className="card-body w-96" onSubmit={handlerRegister}>
+      
 
         <div className="form-control">
           <label className="label">
@@ -52,11 +52,12 @@ const Register = () => {
         <div className="form-control mt-6">
           <button className="btn btn-primary">Register</button>
         </div>
-      </form>
-      <p>Alredy Have account? Please <Link to={'/Login'}>
+        <p>Alredy Have account? Please <Link to={'/Login'}>
       <button className="btn btn-link">Login</button>
       </Link></p>
       </form>
+    
+  
      
     </div>
   </div>
